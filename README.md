@@ -10,11 +10,11 @@ This is a backend-only service. If you're looking for the web frontend applicati
 npm install -g bitcore-node@latest
 bitcore-node create mynode
 cd mynode
-bitcore-node install insight-api
+bitcore-node install insight-bcash-api
 bitcore-node start
 ```
 
-The API endpoints will be available by default at: `http://localhost:3001/insight-api/`
+The API endpoints will be available by default at: `http://localhost:3001/insight-bcash-api/`
 
 ## Prerequisites
 
@@ -99,22 +99,22 @@ Caching support has not yet been added in the v0.3 upgrade.
 
 ## Query Rate Limit
 
-To protect the server, insight-api has a built it query rate limiter. It can be configurable in `bitcore-node.json` with:
+To protect the server, insight-bcash-api has a built it query rate limiter. It can be configurable in `bitcore-node.json` with:
 ``` json
   "servicesConfig": {
-    "insight-api": {
+    "insight-bcash-api": {
       "rateLimiterOptions": {
         "whitelist": ["::ffff:127.0.0.1"]
       }
     }
   }
 ```
-With all the configuration options available: https://github.com/bitpay/insight-api/blob/master/lib/ratelimiter.js#L10-17
+With all the configuration options available: https://github.com/bitpay/insight-bcash-api/blob/master/lib/ratelimiter.js#L10-17
 
 Or disabled entirely with:
 ``` json
   "servicesConfig": {
-    "insight-api": {
+    "insight-bcash-api": {
       "disableRateLimiter": true
     }
   }
@@ -125,20 +125,20 @@ Or disabled entirely with:
 
 ### Block
 ```
-  /insight-api/block/[:hash]
-  /insight-api/block/00000000a967199a2fad0877433c93df785a8d8ce062e5f9b451cd1397bdbf62
+  /insight-bcash-api/block/[:hash]
+  /insight-bcash-api/block/00000000a967199a2fad0877433c93df785a8d8ce062e5f9b451cd1397bdbf62
 ```
 
 #### Multiple blocks
 ```
-  /insight-api/block/[:hash1],[:hash2],...,[:hash,]
+  /insight-bcash-api/block/[:hash1],[:hash2],...,[:hash,]
 ```
 
 ### Block Index
 Get block hash by height
 ```
-  /insight-api/block-index/[:height]
-  /insight-api/block-index/0
+  /insight-bcash-api/block-index/[:height]
+  /insight-bcash-api/block-index/0
 ```
 This would return:
 ```
@@ -151,8 +151,8 @@ which is the hash of the Genesis block (0 height)
 
 ### Raw Block
 ```
-  /insight-api/rawblock/[:blockHash]
-  /insight-api/rawblock/[:blockHeight]
+  /insight-bcash-api/rawblock/[:blockHash]
+  /insight-bcash-api/rawblock/[:blockHeight]
 ```
 
 This would return:
@@ -166,7 +166,7 @@ This would return:
 
 Get block summaries by date:
 ```
-  /insight-api/blocks?limit=3&blockDate=2016-04-22
+  /insight-bcash-api/blocks?limit=3&blockDate=2016-04-22
 ```
 
 Example response:
@@ -200,43 +200,43 @@ Example response:
 
 ### Transaction
 ```
-  /insight-api/tx/[:txid]
-  /insight-api/tx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
-  /insight-api/rawtx/[:rawid]
-  /insight-api/rawtx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
+  /insight-bcash-api/tx/[:txid]
+  /insight-bcash-api/tx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
+  /insight-bcash-api/rawtx/[:rawid]
+  /insight-bcash-api/rawtx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
 ```
 
 ### Multiple Transactions
 ```
-  /insight-api/txs/[:rawid1],[:rawid2],...,[:rawidn]
-  /insight-api/rawtxs/[:rawid1],[:rawid2],...,[:rawidn]
+  /insight-bcash-api/txs/[:rawid1],[:rawid2],...,[:rawidn]
+  /insight-bcash-api/rawtxs/[:rawid1],[:rawid2],...,[:rawidn]
 ```
 
 ### Address
 ```
-  /insight-api/addr/[:addr][?noTxList=1][&from=&to=]
-  /insight-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?noTxList=1
-  /insight-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?from=1000&to=2000
+  /insight-bcash-api/addr/[:addr][?noTxList=1][&from=&to=]
+  /insight-bcash-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?noTxList=1
+  /insight-bcash-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?from=1000&to=2000
 ```
 
 ### Multiple Addresses
 ```
-  /insight-api/addrs/[:addr1],[:addr2],...,[:addrn][?noTxList=1&noCache=1]
+  /insight-bcash-api/addrs/[:addr1],[:addr2],...,[:addrn][?noTxList=1&noCache=1]
 
 ```
 
 ### Address Properties
 ```
-  /insight-api/addr/[:addr]/balance
-  /insight-api/addr/[:addr]/totalReceived
-  /insight-api/addr/[:addr]/totalSent
-  /insight-api/addr/[:addr]/unconfirmedBalance
+  /insight-bcash-api/addr/[:addr]/balance
+  /insight-bcash-api/addr/[:addr]/totalReceived
+  /insight-bcash-api/addr/[:addr]/totalSent
+  /insight-bcash-api/addr/[:addr]/unconfirmedBalance
 ```
 The response contains the value in Satoshis.
 
 ### Unspent Outputs
 ```
-  /insight-api/addr/[:addr]/utxo
+  /insight-bcash-api/addr/[:addr]/utxo
 ```
 Sample return:
 ```
@@ -267,13 +267,13 @@ Sample return:
 ### Unspent Outputs for Multiple Addresses
 GET method:
 ```
-  /insight-api/addrs/[:addrs]/utxo
-  /insight-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/utxo
+  /insight-bcash-api/addrs/[:addrs]/utxo
+  /insight-bcash-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/utxo
 ```
 
 POST method:
 ```
-  /insight-api/addrs/utxo
+  /insight-bcash-api/addrs/utxo
 ```
 
 POST params:
@@ -283,25 +283,25 @@ addrs: 2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f
 
 ### Transactions by Block
 ```
-  /insight-api/txs/?block=HASH
-  /insight-api/txs/?block=00000000fa6cf7367e50ad14eb0ca4737131f256fc4c5841fd3c3f140140e6b6
+  /insight-bcash-api/txs/?block=HASH
+  /insight-bcash-api/txs/?block=00000000fa6cf7367e50ad14eb0ca4737131f256fc4c5841fd3c3f140140e6b6
 ```
 ### Transactions by Address
 ```
-  /insight-api/txs/?address=ADDR
-  /insight-api/txs/?address=mmhmMNfBiZZ37g1tgg2t8DDbNoEdqKVxAL
+  /insight-bcash-api/txs/?address=ADDR
+  /insight-bcash-api/txs/?address=mmhmMNfBiZZ37g1tgg2t8DDbNoEdqKVxAL
 ```
 
 ### Transactions for Multiple Addresses
 GET method:
 ```
-  /insight-api/addrs/[:addrs]/txs[?from=&to=]
-  /insight-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/txs?from=0&to=20
+  /insight-bcash-api/addrs/[:addrs]/txs[?from=&to=]
+  /insight-bcash-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/txs?from=0&to=20
 ```
 
 POST method:
 ```
-  /insight-api/addrs/txs
+  /insight-bcash-api/addrs/txs
 ```
 
 POST params:
@@ -347,7 +347,7 @@ Note: if pagination params are not specified, the result is an array of transact
 ### Transaction Broadcasting
 POST method:
 ```
-  /insight-api/tx/send
+  /insight-bcash-api/tx/send
 ```
 POST params:
 ```
@@ -373,17 +373,17 @@ POST response:
 
 ### Historic Blockchain Data Sync Status
 ```
-  /insight-api/sync
+  /insight-bcash-api/sync
 ```
 
 ### Live Network P2P Data Sync Status
 ```
-  /insight-api/peer
+  /insight-bcash-api/peer
 ```
 
 ### Status of the Bitcoin Network
 ```
-  /insight-api/status?q=xxx
+  /insight-bcash-api/status?q=xxx
 ```
 
 Where "xxx" can be:
@@ -396,7 +396,7 @@ Where "xxx" can be:
 
 ### Utility Methods
 ```
-  /insight-api/utils/estimatefee[?nbBlocks=2]
+  /insight-bcash-api/utils/estimatefee[?nbBlocks=2]
 ```
 
 
