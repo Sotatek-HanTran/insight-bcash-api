@@ -8,7 +8,7 @@ var CurrencyController = require('../lib/currency');
 describe('Currency', function() {
 
   var bitstampData = {
-    btc_usd: {
+    bch_usd: {
       high: 239.44,
       last: 237.90,
       vol: 21463.27736401,
