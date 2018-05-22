@@ -8,9 +8,9 @@ describe('Status', function() {
   describe('/status', function() {
     var info = {
       version: 110000,
-      protocolVersion: 70002,
+      protocolversion: 70002,
       blocks: 548645,
-      timeOffset: 0,
+      timeoffset: 0,
       connections: 8,
       difficulty: 21546.906405522557,
       testnet: true,
@@ -34,6 +34,11 @@ describe('Status', function() {
           getInfo: sinon.stub().callsArgWith(0, null, info),
           getTip: sinon.stub().returns({ hash: outSetInfo.bestblock }),
           getBestBlockHash: sinon.stub().callsArgWith(0, null, outSetInfo.bestblock),
+        },
+        p2p: {
+          _pool: {
+            numberConnected: sinon.stub().returns(8)
+          }
         }
       }
     };
