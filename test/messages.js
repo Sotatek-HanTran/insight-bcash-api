@@ -57,7 +57,7 @@ describe('Messages', function() {
 
     controller.verify(req, res);
   });
-  
+
   it('handle an error from message verification', function(done) {
     var controller = new MessagesController({node: {}});
     var req = {

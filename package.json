@@ -1,50 +1,12 @@
 {
   "name": "insight-bcash-api",
   "description": "A Bitcoin blockchain REST and web socket API service for Bitcore Node.",
-  "version": "0.4.7",
-  "repository": "git://github.com/CoinSpace/insight-bcash-api.git",
-  "contributors": [
-    {
-      "name": "Gustavo Cortez",
-      "email": "cmgustavo83@gmail.com"
-    },
-    {
-      "name": "Ivan Socolsky",
-      "email": "jungans@gmail.com"
-    },
-    {
-      "name": "Juan Ignacio Sosa Lopez",
-      "email": "bechilandia@gmail.com"
-    },
-    {
-      "name": "Manuel Araoz",
-      "email": "manuelaraoz@gmail.com"
-    },
-    {
-      "name": "Matias Alejo Garcia",
-      "email": "ematiu@gmail.com"
-    },
-    {
-      "name": "Mario Colque",
-      "email": "colquemario@gmail.com"
-    },
-    {
-      "name": "Patrick Nagurny",
-      "email": "patrick@bitpay.com"
-    },
-    {
-      "name": "Braydon Fuller",
-      "email": "braydon@bitpay.com"
-    },
-    {
-      "name": "Eugene Krevenets",
-      "email": "ievgenii.krevenets@gmail.com"
-    }
-  ],
+  "version": "5.0.0-beta.44",
+  "repository": "git://github.com/bitpay/insight-api.git",
   "bugs": {
-    "url": "https://github.com/CoinSpace/insight-bcash-api/issues"
+    "url": "https://github.com/bitpay/insight-api/issues"
   },
-  "homepage": "https://github.com/CoinSpace/insight-bcash-api",
+  "homepage": "https://github.com/bitpay/insight-api",
   "license": "MIT",
   "keywords": [
     "insight",
@@ -56,29 +18,37 @@
     "bitcore"
   ],
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=8.2.0"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha -R spec --recursive"
+    "test": "NODE_ENV=test mocha -R spec --recursive",
+    "regtest": "mocha -R spec regtest",
+    "perf": "mocha -R spec perf"
   },
   "main": "lib",
   "bitcoreNode": "lib",
   "dependencies": {
+    "JSONStream": "^1.3.1",
     "async": "*",
-    "bitcore-lib": "satoshilabs/bitcore-lib#8e2caed768aa269b433a14981f0e36c0838a3d91",
-    "bitcore-message": "satoshilabs/bitcore-message#3c91c372285018d4a840dca8731899107b7c31df",
+    "bcoin": "bcoin-org/bcoin#886008a1822ce1da7fa8395ee7db4bcc1750a28a",
+    "bitcore-lib": "5.0.0-beta.1",
+    "bitcore-lib-cash": "^0.18.0",
+    "bitcore-message": "^1.0.1",
     "body-parser": "^1.13.3",
     "compression": "^1.6.1",
     "lodash": "^2.4.1",
-    "lru-cache": "^4.0.1",
+    "lru-cache": "^4.1.1",
     "morgan": "^1.7.0",
     "request": "^2.64.0"
   },
   "devDependencies": {
+    "bitcoind-rpc": "^0.7.0",
+    "bitcore-p2p": "5.0.0-beta.2",
     "chai": "^3.5.0",
+    "mkdirp": "^0.5.1",
     "mocha": "^2.4.5",
     "proxyquire": "^1.7.2",
-    "rewire": "^2.5.1",
+    "rimraf": "^2.6.1",
     "should": "^8.3.1",
     "sinon": "^1.10.3"
   }
