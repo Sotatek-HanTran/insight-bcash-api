@@ -102,6 +102,7 @@ describe('Transactions', function() {
       var transactions = new TxController(node);
       var txid = 'eac9723230b8b632117ac3d75288d6f8eb81cf1ea553eb9fd42562d5f767d54a';
       var req = {
+        query: {},
         params: {
           txid: txid
         }
