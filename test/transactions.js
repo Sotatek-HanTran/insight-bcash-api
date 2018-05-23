@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
 var sinon = require('sinon');
-var bitcore = require('bitcore-lib');
+var bitcore = require('bitcore-lib-cash');
 var TxController = require('../lib/transactions');
 var _ = require('lodash');
 
@@ -1034,10 +1034,10 @@ describe('Transactions', function() {
         'valueOut': 0.02038504,
         'vout': [
           {
-            '3DQYCLG6rZdtV2Xw8y4YtozZjNHYoKsLuo': 45000
+            'HJEef8hBhsrZ7CQxzeihsCX6m2JZh5rdiH': 45000
           },
           {
-            '12WvZmssxT85f81dD6wcmWznxbnFkEpNMS': 1993504
+            'CHyp8pDwqW6cZFv3trGYM2cpaizfdRmD9g': 1993504
           }
         ],
         'isRBF': false

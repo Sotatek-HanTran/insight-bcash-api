@@ -3,7 +3,7 @@
 var should = require('should');
 var sinon = require('sinon');
 var MessagesController = require('../lib/messages');
-var bitcore = require('bitcore-lib');
+var bitcore = require('bitcore-lib-cash');
 var _ = require('lodash');
 
 describe('Messages', function() {
@@ -57,7 +57,7 @@ describe('Messages', function() {
 
     controller.verify(req, res);
   });
-  
+
   it('handle an error from message verification', function(done) {
     var controller = new MessagesController({node: {}});
     var req = {
@@ -75,7 +75,7 @@ describe('Messages', function() {
     };
     controller.verify(req, res);
     status.args[0][0].should.equal(400);
-    send.args[0][0].should.equal('Unexpected error: Checksum mismatch. Code:1');
+    send.args[0][0].should.equal('Unexpected error: Invalid Argument: Mixed case. Code:1');
     done();
   });
 
