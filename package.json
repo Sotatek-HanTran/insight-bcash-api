@@ -65,8 +65,8 @@
   "bitcoreNode": "lib",
   "dependencies": {
     "async": "*",
-    "bitcore-lib-cash": "bitpay/bitcore-lib#cc4a7ae22b6e08f006cd8635698880bb3d7ceb2d",
-    "bitcore-message": "CoinSpace/bitcore-message#af6deb83e5a79c49bb41e5c0e276946c20636434",
+    "bitcore-lib-cash": "CoinSpace/bitcore-lib#df894296b4670856749b2b09c9f3c90182558a02",
+    "bitcore-message": "CoinSpace/bitcore-message#e2ec3c84c1c06c79fa9283861110418d6a0aaea3",
     "body-parser": "^1.13.3",
     "compression": "^1.6.1",
     "lodash": "^2.4.1",
